@@ -19,5 +19,11 @@ public class PersonalTask implements ITask {
     public void display() {
         System.out.println("Osobní úkol: " + popis + ", Max: " + maxCas + ", Odpracováno: " + odpracovano + ", Hotovo: " + hotovo);
     }
+    public boolean isDone() {
+        return hotovo; }
+    public int getOdpracovano() {
+        return odpracovano; }
+    public String getPopis() {
+        return popis; }
 }
 
