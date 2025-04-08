@@ -10,7 +10,7 @@ static Scanner sc = new Scanner(System.in);
 
 public static void main(String[] args) {
 while (true) {
-System.out.println("\n--- MENU ---");
+System.out.println("--- MENU ---");
 System.out.println("1. Nový úkol");
 System.out.println("2. Update úkolu");
 System.out.println("3. Výpisy");
@@ -89,7 +89,7 @@ seznam.get(index).update(h, d);
 }
 
 static void vypisy() {
-System.out.println("\n--- VÝPISY ---");
+System.out.println("--- VÝPISY ---");
 System.out.println("1. Všechny úkoly");
 System.out.println("2. Nejdelší osobní popis");
 System.out.println("3. Počet nehotových úkolů");
