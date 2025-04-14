@@ -1,40 +1,38 @@
-public class WorkTask implements ITask {
+class WorkTask implements ITask {
     private String popis;
-    private int hodinNutnych;
-    private int odpracovano;
-    private boolean hotovo;
+    private int hodin;
     private String deadline;
-    private int cenaZaHodinu;
+    private int sazba;
+    private int odpracovano;
+    private boolean done;
 
-    public WorkTask(String popis, int hodinNutnych, String deadline, int cenaZaHodinu) {
+    public WorkTask(String popis, int hodin, String deadline, int sazba) {
         this.popis = popis;
-        this.hodinNutnych = hodinNutnych;
+        this.hodin = hodin;
         this.deadline = deadline;
-        this.cenaZaHodinu = cenaZaHodinu;
+        this.sazba = sazba;
         this.odpracovano = 0;
-        this.hotovo = false;
+        this.done = false;
     }
 
-    public void update(int noveOdpracovano, boolean isDone) {
-        odpracovano += noveOdpracovano;
-        if (odpracovano > hodinNutnych) {
-            System.out.println("Upozornění: Překročil jsi počet hodin – některé nemusí být proplacené.");
-        }
-        hotovo = isDone;
-    }
-
+    @Override
     public void display() {
-        System.out.println("WorkTask: " + popis + " | Hodin: " + hodinNutnych + " | Odpracováno: " + odpracovano +
-                " | Hotovo: " + hotovo + " | Deadline: " + deadline + " | Kč/h: " + cenaZaHodinu);
+        System.out.println("Work Task: " + popis + ", Hours: " + hodin + ", Deadline: " + deadline + ", Rate: " + sazba + ", Done: " + done);
     }
 
+    @Override
+    public void update(int hours, boolean done) {
+        this.odpracovano = hours;
+        this.done = done;
+    }
 
-    public boolean isDone() {
-        return hotovo; }
+    @Override
     public int getOdpracovano() {
-        return odpracovano; }
-    public int getCenaZaHodinu() {
-        return cenaZaHodinu; }
-    public String getPopis() {
-        return popis; }
+        return this.odpracovano;
+    }
+
+    @Override
+    public boolean isDone() {
+        return this.done;
+    }
 }

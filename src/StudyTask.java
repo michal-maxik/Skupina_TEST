@@ -1,30 +1,34 @@
-public class StudyTask implements ITask {
+class StudyTask implements ITask {
     private String predmet;
-    private int hodinCelkem;
+    private int hodiny;
     private int odpracovano;
-    private boolean hotovo;
+    private boolean done;
 
-    public StudyTask(String predmet, int hodinCelkem) {
+    public StudyTask(String predmet, int hodiny) {
         this.predmet = predmet;
-        this.hodinCelkem = hodinCelkem;
+        this.hodiny = hodiny;
         this.odpracovano = 0;
-        this.hotovo = false;
+        this.done = false;
     }
 
-    public void update(int noveOdpravovano, boolean isDone) {
-        this.odpracovano += noveOdpravovano;
-        this.hotovo = isDone;
-    }
-
+    @Override
     public void display() {
-        System.out.println("Studijní předmět: " + predmet + " Počet hodin: " + hodinCelkem + " Již odstudováno: " + odpracovano + " Studium hotovo?: " + hotovo);
+        System.out.println("Study Task: " + predmet + ", Hours: " + hodiny + ", Done: " + done);
     }
 
-    public boolean isDone() {
-        return hotovo;
+    @Override
+    public void update(int hours, boolean done) {
+        this.odpracovano = hours;
+        this.done = done;
     }
 
+    @Override
     public int getOdpracovano() {
-        return odpracovano;
+        return this.odpracovano;
+    }
+
+    @Override
+    public boolean isDone() {
+        return this.done;
     }
 }

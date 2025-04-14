@@ -1,4 +1,6 @@
-public interface ITask {
-void update(int noveOdpracovano, boolean isDone);
-void display();
+interface ITask {
+    void display();
+    void update(int hours, boolean done);
+    int getOdpracovano();
+    boolean isDone();
 }

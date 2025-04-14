@@ -1,29 +1,38 @@
-public class PersonalTask implements ITask {
+class PersonalTask implements ITask {
     private String popis;
-    private int maxCas;
+    private int maxHodiny;
     private int odpracovano;
-    private boolean hotovo;
+    private boolean done;
 
-    public PersonalTask(String popis, int maxCas) {
+    public PersonalTask(String popis, int maxHodiny) {
         this.popis = popis;
-        this.maxCas = maxCas;
+        this.maxHodiny = maxHodiny;
         this.odpracovano = 0;
-        this.hotovo = false;
+        this.done = false;
     }
 
-    public void update(int noveHodiny, boolean isDone) {
-        this.odpracovano += noveHodiny;
-        this.hotovo = isDone;
-    }
-
+    @Override
     public void display() {
-        System.out.println("Osobní úkol: " + popis + ", Max: " + maxCas + ", Odpracováno: " + odpracovano + ", Hotovo: " + hotovo);
+        System.out.println("Personal Task: " + popis + ", Max Hours: " + maxHodiny + ", Done: " + done);
     }
-    public boolean isDone() {
-        return hotovo; }
-    public int getOdpracovano() {
-        return odpracovano; }
-    public String getPopis() {
-        return popis; }
-}
 
+    @Override
+    public void update(int hours, boolean done) {
+        this.odpracovano = hours;
+        this.done = done;
+    }
+
+    @Override
+    public int getOdpracovano() {
+        return this.odpracovano;
+    }
+
+    @Override
+    public boolean isDone() {
+        return this.done;
+    }
+
+    public String getPopis() {
+        return popis;
+    }
+}
